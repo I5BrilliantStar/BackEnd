@@ -17,7 +17,6 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-
 public class ProductInBox extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
