@@ -1,18 +1,8 @@
 package com.example.project02.entity;
 
 import lombok.*;
-import org.hibernate.annotations.DynamicUpdate;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
-import javax.persistence.criteria.CriteriaBuilder;
-import java.text.DateFormat;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
-import java.util.Date;
 import java.util.Set;
 
 @Entity
@@ -20,6 +10,7 @@ import java.util.Set;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class Product extends BaseEntity {
 
     @Id
@@ -48,4 +39,5 @@ public class Product extends BaseEntity {
     // Add more fields and relationships as needed
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true,fetch = FetchType.LAZY)
     private Set<ProductInBox> productsInBox;
+
 }
