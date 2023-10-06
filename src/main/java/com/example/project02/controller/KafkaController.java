@@ -21,7 +21,7 @@ public class KafkaController {
 
     @PostMapping
     public String sendMessage(@RequestParam("message") String message) {
-        this.producer.sendMessage(message);
+        this.producer.sendMessageToIot(message);
 
         return "success";
     }

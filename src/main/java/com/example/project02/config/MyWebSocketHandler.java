@@ -1,5 +1,6 @@
     package com.example.project02.config;
 
+    import com.example.project02.service.KafkaProducer;
     import org.slf4j.Logger;
     import org.slf4j.LoggerFactory;
     import org.springframework.stereotype.Component;
@@ -16,6 +17,12 @@
         // WebSocket 세션을 저장할 맵 선언 및 초기화
         private static final Map<String, WebSocketSession> sessionMap = new ConcurrentHashMap<>();
         private static final Logger logger = LoggerFactory.getLogger(MyWebSocketHandler.class);
+
+        private final KafkaProducer kafkaProducer;
+
+        public MyWebSocketHandler(KafkaProducer kafkaProducer) {
+            this.kafkaProducer = kafkaProducer;
+        }
 
         @Override
         public void afterConnectionEstablished(WebSocketSession session) throws Exception {
@@ -38,6 +45,8 @@
         protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
             // 클라이언트로부터 메시지를 받아 처리
             String receivedMessage = message.getPayload();
+
+            kafkaProducer.sendMessageToIot(receivedMessage);
             // 처리된 메시지를 다른 클라이언트에게 브로드캐스트
             session.sendMessage(new TextMessage("서버에서 보낸 메시지: " + receivedMessage));
         }
