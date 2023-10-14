@@ -43,8 +43,8 @@ public class Securityconfig extends WebSecurityConfigurerAdapter {
             .and()
             .exceptionHandling()
                 .authenticationEntryPoint(new CustomAuthenticationEntryPoint())
-            .and()
-            .cors(); // CORS 설정을 활성화
+            .and();
+//            .cors(); // CORS 설정을 활성화
 //            .and()
 //            .addFilterBefore(new JwtTokenFilter(userService, secretKey), UsernamePasswordAuthenticationFilter.class);
     }

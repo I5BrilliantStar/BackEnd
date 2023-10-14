@@ -1,5 +1,6 @@
 package com.example.project02.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 import org.springframework.boot.context.properties.bind.DefaultValue;
@@ -34,5 +35,6 @@ public class WareHouse extends BaseEntity {
     // Add more fields and relationships as needed
     @JsonManagedReference
     @OneToMany(mappedBy = "wareHouse", cascade = CascadeType.ALL, orphanRemoval = true,fetch = FetchType.LAZY)
+    @JsonBackReference  // Add this annotation
     private List<Box> Boxes = new ArrayList<>();
 }

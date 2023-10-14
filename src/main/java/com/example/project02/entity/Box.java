@@ -44,10 +44,11 @@ public class Box extends BaseEntity {
 
     @JsonManagedReference
     @OneToMany(mappedBy = "box", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @JsonBackReference  // Add this annotation
     private List<ProductInBox> productInBoxes = new ArrayList<>();
 
     @JsonBackReference
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "warehouse_id")
     private WareHouse wareHouse;
 

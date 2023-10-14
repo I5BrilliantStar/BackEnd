@@ -46,6 +46,12 @@ public class WareHouseServiceImpl implements WareHouseService{
     }
 
     @Override
+    public WareHouseDTO getWareHouseByProductId(Long id) {
+        Optional<WareHouse> wareHouse = wareHouseRepository.findById(id);
+        return wareHouse.map(this::convertToDTO).orElse(null);
+    }
+
+    @Override
     public WareHouseDTO createWareHouse(WareHouseDTO wareHouseDTO) {
         WareHouse wareHouse = convertToEntity(wareHouseDTO);
         wareHouse = wareHouseRepository.save(wareHouse);
@@ -77,7 +83,7 @@ public class WareHouseServiceImpl implements WareHouseService{
     }
 
     // Add more service methods as needed
-    private WareHouseDTO convertToDTO(WareHouse wareHouse) {
+    public WareHouseDTO convertToDTO(WareHouse wareHouse) {
         return WareHouseDTO.builder()
                 .id(wareHouse.getId())
                 .name(wareHouse.getName())
@@ -101,7 +107,7 @@ public class WareHouseServiceImpl implements WareHouseService{
                 .collect(Collectors.toList());
     }
 
-    private WareHouse convertToEntity(WareHouseDTO wareHouseDTO) {
+    public WareHouse convertToEntity(WareHouseDTO wareHouseDTO) {
         WareHouse wareHouse = new WareHouse();
         wareHouse.setId(wareHouseDTO.getId());
         wareHouse.setName(wareHouseDTO.getName());

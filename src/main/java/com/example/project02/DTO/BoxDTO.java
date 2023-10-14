@@ -17,5 +17,5 @@ public class BoxDTO {
     private boolean inspectionStatus;
     private String inspectionTime;
     private List<ProductInBoxDTO> productInBoxes; // Assuming ProductInBoxDTO exists
-    private WareHouse wareHouse;
+//    private WareHouseDTO wareHouse;
 }

@@ -3,7 +3,6 @@ package com.example.project02.service;
 import com.example.project02.DTO.BoxDTO;
 import com.example.project02.DTO.ProductInBoxDTO;
 import com.example.project02.entity.Box;
-import com.example.project02.entity.Product;
 import com.example.project02.entity.ProductInBox;
 import com.example.project02.entity.WareHouse;
 import com.example.project02.repository.BoxRepository;
@@ -26,13 +25,15 @@ public class BoxServiceImpl implements BoxService {
     private final WareHouseRepository wareHouseRepository;
     private final ProductInBoxRepository productInBoxRepository;
     private final ProductRepository productRepository;
+    private final WareHouseServiceImpl wareHouseService;
 
     @Autowired
-    public BoxServiceImpl(BoxRepository boxRepository, WareHouseRepository wareHouseRepository, ProductInBoxRepository productInBoxRepository, ProductRepository productRepository) {
+    public BoxServiceImpl(BoxRepository boxRepository, WareHouseRepository wareHouseRepository, ProductInBoxRepository productInBoxRepository, ProductRepository productRepository, WareHouseServiceImpl wareHouseService) {
         this.boxRepository = boxRepository;
         this.wareHouseRepository = wareHouseRepository;
         this.productInBoxRepository = productInBoxRepository;
         this.productRepository = productRepository;
+        this.wareHouseService = wareHouseService;
     }
 
     @Override
@@ -69,7 +70,13 @@ public class BoxServiceImpl implements BoxService {
 
         Box box = convertToEntity(boxDTO);
         box.setWareHouse(wareHouse);
+
+        // 창고(warehouse) 엔티티에도 박스를 추가하고 저장
+        wareHouse.getBoxes().add(box);
+
+        // 박스 엔티티 저장
         box = boxRepository.save(box);
+
         return convertToDTO(box);
     }
 
@@ -108,7 +115,7 @@ public class BoxServiceImpl implements BoxService {
             return null;
         }
 
-        return BoxDTO.builder()
+        BoxDTO.BoxDTOBuilder builder = BoxDTO.builder()
                 .id(box.getId())
                 .name(box.getName())
                 .size(box.getSize())
@@ -116,9 +123,14 @@ public class BoxServiceImpl implements BoxService {
                 .aiCheckTime(box.getAiCheckTime())
                 .inspectionStatus(box.isInspectionStatus())
                 .inspectionTime(box.getInspectionTime())
-                .productInBoxes(convertProductInBoxListToDTOList(box.getProductInBoxes()))
-                .wareHouse(box.getWareHouse())
-                .build();
+                .productInBoxes(convertProductInBoxListToDTOList(box.getProductInBoxes()));
+
+//        // WareHouse가 null이 아닌 경우에만 wareHouse를 추가
+//        if (box.getWareHouse() != null) {
+//            builder.wareHouse(wareHouseService.convertToDTO(box.getWareHouse()));
+//        }
+
+        return builder.build();
     }
 
     private List<ProductInBoxDTO> convertProductInBoxListToDTOList(List<ProductInBox> productInBoxes) {
@@ -142,7 +154,14 @@ public class BoxServiceImpl implements BoxService {
         box.setAiCheckTime(boxDTO.getAiCheckTime());
         box.setInspectionStatus(boxDTO.isInspectionStatus());
         box.setInspectionTime(boxDTO.getInspectionTime());
-        box.setWareHouse(boxDTO.getWareHouse());
+
+//        // WareHouseDTO가 null이 아닌 경우에만 설정
+//        if (boxDTO.getWareHouse() != null) {
+//            box.setWareHouse(wareHouseService.convertToEntity(boxDTO.getWareHouse()));
+//        } else {
+//            // WareHouseDTO가 null인 경우, Box의 WareHouse 속성을 null로 설정
+//            box.setWareHouse(null);
+//        }
 
         return box;
     }

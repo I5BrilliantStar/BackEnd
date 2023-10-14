@@ -7,7 +7,7 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create
       use-new-id-generator-mappings: false
     database: mysql
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
@@ -24,7 +24,7 @@ spring:
     producer:
       bootstrap-servers: ${KAFKA_URL}
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
-      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
 
 jwt:
   secret: mysecret.sjb_2023_.qwer1234.Dkagh1234! # 길어야 함

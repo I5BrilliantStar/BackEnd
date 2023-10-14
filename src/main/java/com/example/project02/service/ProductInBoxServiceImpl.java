@@ -129,6 +129,8 @@ public class ProductInBoxServiceImpl implements ProductInBoxService {
     public ProductInBox convertToEntity(ProductInBoxDTO productInBoxDTO) {
         ProductInBox productInBox = new ProductInBox();
         productInBox.setId(productInBoxDTO.getId());
+        productInBox.setQuantity(productInBoxDTO.getQuantity());
+        productInBox.setFquantity(productInBoxDTO.getFquantity());
         Box boxEntity = boxService.findById(productInBoxDTO.getBoxId());
         Product productEntity = productService.findById(productInBoxDTO.getProductId());
         productInBox.setBox(boxEntity);

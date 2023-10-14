@@ -52,6 +52,31 @@ public class WareHouseController {
         }
     }
 
+    @GetMapping("/productId={productId}")
+    public ResponseEntity<WareHouseDTO> getWareHouseByProductId(@PathVariable Long productId) {
+        Long warehouseId = calculateWarehouseId(productId);
+
+        WareHouseDTO wareHouseDTO = wareHouseService.getWareHouseByProductId(warehouseId);
+
+        if (wareHouseDTO != null) {
+            return new ResponseEntity<>(wareHouseDTO, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    // Warehouse ID 계산 로직을 별도의 메서드로 추출
+    private Long calculateWarehouseId(Long productId) {
+        if (productId % 2 == 1) {
+            return 1L;
+        } else if (productId % 2 == 0) {
+            return 2L;
+        } else {
+            // 원하는 조건에 해당하지 않는 경우 예외 처리 또는 기본 Warehouse ID 설정
+            return 3L;
+        }
+    }
+
 
     @PostMapping
     public ResponseEntity<WareHouseDTO> createWareHouse(@RequestBody WareHouseDTO wareHouseDTO) {

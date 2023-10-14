@@ -9,6 +9,7 @@ public interface WareHouseService {
     List<WareHouseDTO> getAllWareHouses();
     WareHouseDTO getWareHouseById(Long id);
     WareHouseDTO getWareHouseByName(String name);
+    WareHouseDTO getWareHouseByProductId(Long id);
     WareHouseDTO createWareHouse(WareHouseDTO wareHouseDTO);
     WareHouseDTO updateWareHouse(Long id, WareHouseDTO wareHouseDTO);
     void deleteWareHouse(Long id);

@@ -35,3 +35,7 @@ out/
 
 ### VS Code ###
 .vscode/
+
+# WebSocket 로그 파일 무시
+websocket.log
+websocket.log*
