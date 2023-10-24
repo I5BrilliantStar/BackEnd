@@ -1,91 +1,45 @@
-<h1 align="center">프로젝트 제목 👍</h1>
+<h1 align="center">스마트 물류 자동화 시스템 프로젝트 백엔드 💻 </h1>
 
+## 🛠️ 기술 스택
 
-<center>
-    <img src="./img/pic1.png"  style="zoom:76%;" align="center"/>
-</center>
+<img src="https://img.shields.io/badge/SpringBoot-6DB33F?style=round&logo=Spring&logoColor=white" /> <img src="https://img.shields.io/badge/MySQL-4479a1?style=round&logo=mysql&logoColor=white" /> <img src="https://img.shields.io/badge/Apache Kafka-231F20?style=round&logo=apache kafka&logoColor=white" />
 
+## 🤹🏻 기술 스택 선정 이유
 
-
-> [한국품질재단] 프로젝트 기반 ICT 융합 스마트팩토리 전문가 양성과정 / 1팀
-
-
-🎬[Demo 시연영상](https://www.youtube.com/watch?v=dhMrKTwNI8U&lc=UgzCJR3WxkvsckRyyO94AaABAg&ab_channel=%EB%94%B0%EB%9D%BC%ED%95%98%EB%A9%B4%EC%84%9C%EB%B0%B0%EC%9A%B0%EB%8A%94IT)   
-🎤[발표](https://www.youtube.com/watch?v=dhMrKTwNI8U&lc=UgzCJR3WxkvsckRyyO94AaABAg&ab_channel=%EB%94%B0%EB%9D%BC%ED%95%98%EB%A9%B4%EC%84%9C%EB%B0%B0%EC%9A%B0%EB%8A%94IT)  
-📃[프로젝트 회고록](블로그주소) 
-
-<br>
-
-## ✨ 프로젝트 설명
-
-```sh
-~~~는 어쩌고 저쩌고 서비스 입니다.
-```
-
-## 🎬 [데모 사이트](http://www.naver.com) <- 클릭하면 이동됩니다!
-```sh
-현재는 AWS 프론트엔드, 백엔드, RDS로 배포한 상태입니다.
-``````
-
+- SpringBoot : Spring Boot는 Java 기반의 웹 응용 프로그램을 빠르게 구축하고 배포하기 위한 프레임워크로, 개발 생산성을 향상시키며 많은 개발자 커뮤니티와 지원을 갖추고 있습니다. 또한 Spring Boot는 강력한 기능과 모듈을 제공하여 웹 애플리케이션을 안정적으로 운영할 수 있게 해줍니다.
+- MySQL : MySQL은 신뢰성 있는 오픈 소스 데이터베이스 관리 시스템으로, 데이터의 안정성과 일관성을 보장하며 빠른 데이터 액세스와 쿼리 처리를 제공합니다. MySQL은 많은 애플리케이션에서 사용되는 데이터베이스로, 대부분의 개발자와 운영팀이 익숙한 기술입니다.
+- Apache Kafka : Apache Kafka는 대규모 데이터 스트리밍 및 이벤트 처리를 위한 분산 스트리밍 플랫폼으로, 대량의 데이터를 안정적으로 전송, 저장 및 처리할 수 있습니다. 이는 데이터 흐름 처리 및 이벤트 기반 애플리케이션을 구축하는 데 매우 중요한 역할을 합니다.
 
 ## 📌 프로젝트 목표
 
 ```sh
-어떤 어떤 기술을 활용해 어떤 걸 구현하려 했다
+스프링 부트를 활용하여 데이터베이스 테이블을 CRUD할 수 있는 Restful API를 개발했습니다.
+JPA를 사용하여 데이터베이스와 상호 작용을 단순화하고 객체 지향 설계를 채택했습니다.
+IoT 장비의 상태 메시지와 장비 제어 명령 메시지를 전송하기 위해 카프카와 웹소켓을 활용합니다.
+백엔드 및 IoT 장비에서 카프카 Producer 및 Consumer를 사용하여 메시지를 교환합니다.
+백엔드 및 프론트엔드 간에 웹소켓을 활용하여 메시지를 실시간으로 전송 및 수신합니다.
 ```
 
+## 📄 API 설계도
+
+[[설계도 확인할 수 있는 링크 또는 그림]](www.naver.com)
 
 ## 🔍 Overview
 
-### 1. 사용자 회원 가입 및 로그인 기능(토큰 인증 방식)
+### 1. 사용자 회원 가입 및 로그인 페이지
 
 <center>
     <img src="./img/pic2.png" />
 </center>
-JWT를 이용한 토큰 인증 방식
+비동기 통신을 활용해서 백엔드에 어쩌고 어쩌고 JWT 토클을 어디에 저장하고 설명설명
 
 <br>
 
-### 2. 게시판 기능
+### 2. 대시보드 페이지
 
 <center>
     <img src="./img/pic1.png" />
 </center>
-어떤 어떤 어떤 걸 작성하는 게시판 기능
+어떤 어떤 어떤 걸 실시간으로 확인할 수 있고 제어할 수 있고~~~~
 
 <br>
-
-
-## System Architecture
-
-<center>
-    <img src="./img/pic2.png" />
-</center>
-대용량 트래픽을 고려한 서버 이중화
-
-<br>
-
-
-
-## 🔧 각 프로젝트 상세 설명
-
-### [프론트 엔드 github](http://www.naver.com) <- 클릭하면 이동됩니다!
-
-### [백 엔드 github](http://www.naver.com) <- 클릭하면 이동됩니다!
-
-### [인공지능 github](http://www.naver.com) <- 클릭하면 이동됩니다!
-
-### [IoT github](http://www.naver.com) <- 클릭하면 이동됩니다!
-
-
-## 🤼‍♂️팀원
-
-Team Leader : 🐯**홍길동**
-
-Backend : 🐶 **김철수**
-
-Backend : 🐺 **박철수**
-
-Frontend : 🐱 **이철수**
-
-인공지능 : 🦁 **최철수**
