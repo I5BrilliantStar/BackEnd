@@ -55,7 +55,7 @@ Product API 명세서 입니다.
 ### 📸2. 실시간 AI 카메라 모니터링 및 제어
 
 <center>
-    <img src="./img/pic2.png" />
+    <img src="./img/qr.gif" />
 </center>
 
 ```sh
@@ -69,7 +69,7 @@ Product API 명세서 입니다.
 ### 💻3. 장비 상태 모니터링
 
 <center>
-    <img src="./img/pic1.png" />
+    <img src="./img/camera.gif" />
 </center>
 
 ```sh
